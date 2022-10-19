@@ -1,0 +1,58 @@
+{
+    "feeds": [
+        {
+            "id": 1,
+            "clientName": "김민수",
+            "clientNumber": 1095223513,
+            "type": "초진",
+            "date": "2022-10-17",
+            "startTime": "4:30",
+            "reservationStatus": "예약"
+        },
+        {
+            "id": 2,
+            "clientName": "최사비",
+            "clientNumber": 84560801,
+            "type": "재진",
+            "date": "2022-10-16",
+            "startTime": "3:30",
+            "reservationStatus": "노쇼"
+        },
+        {
+            "id": 3,
+            "clientName": "김연아",
+            "clientNumber": 12341232,
+            "type": "상담",
+            "date": "2022-10-15",
+            "startTime": "2:30",
+            "reservationStatus": "완료"
+        },
+        {
+            "id": 4,
+            "clientName": "김민수",
+            "clientNumber": 95223513,
+            "type": "초진",
+            "date": "2022-10-17",
+            "startTime": "4:30",
+            "reservationStatus": "예약"
+        },
+        {
+            "id": 4,
+            "clientName": "손흥민",
+            "clientNumber": 12341233,
+            "type": "초진",
+            "date": "2022-10-22",
+            "startTime": "5:30",
+            "reservationStatus": "예약"
+        },
+        {
+            "id": 5,
+            "clientName": "홍길동",
+            "clientNumber": 95223513,
+            "type": "초진",
+            "date": "2022-10-17",
+            "startTime": "4:30",
+            "reservationStatus": "예약"
+        }
+    ]
+}

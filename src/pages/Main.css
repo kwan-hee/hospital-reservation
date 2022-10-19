@@ -1,0 +1,29 @@
+@media screen and (max-width: 1000px) {
+    .reg {
+        margin-top: 20px;
+        display: block;
+        clear: both;
+        width: 80%;
+    }
+
+    .ex {
+        width: 80%;
+        margin-left: -70px;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    .reg {
+        margin-top: 20px;
+        display: block;
+        clear: both;
+        width: 40%;
+    }
+
+    .ex {
+        width: 40%;
+        margin-left: -70px;
+    }
+
+}
