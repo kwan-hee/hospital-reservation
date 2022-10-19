@@ -13,8 +13,14 @@ export function Register() {
         selectData: '',
     });
 
+    const noshow = ['김동률', '아이유', '싸이'];
     const reserchandle = (e) => {
         e.preventDefault();  
+         const show = e.target.value;
+         const result = noshow.indexOf(show)
+         console.log('result',result) 
+         if (result !== -1) alert("No Show!")    
+
         setUserInput({
             ...userInput,
             reserch: e.target.value,
