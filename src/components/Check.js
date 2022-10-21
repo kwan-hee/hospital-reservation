@@ -96,7 +96,7 @@ export function Check() {
         e.preventDefault();
         console.log('handlearray', mark);
         console.log('handle: ', inputRef.current.value);
-        const result = mark.indexOf(inputRef.current.value);
+        const result = mark.indexOf(Number(inputRef.current.value));
 
         if (result === -1) {
             alert('예약 가능');

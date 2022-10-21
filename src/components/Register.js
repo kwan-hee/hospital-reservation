@@ -15,12 +15,12 @@ export function Register() {
 
     const noshow = ['김동률', '아이유', '싸이'];
     const reserchandle = (e) => {
-        e.preventDefault();  
-         const show = e.target.value;
-         const result = noshow.indexOf(show)
-         console.log('result',result) 
-         if (result !== -1) alert("No Show!")    
+        e.preventDefault();
 
+        const show = e.target.value;
+        const result = noshow.indexOf(show);
+        console.log('result', result);
+        if (result !== -1) alert('No Show!');
         setUserInput({
             ...userInput,
             reserch: e.target.value,
@@ -50,77 +50,79 @@ export function Register() {
     console.log('examle', userInput);
 
     const saveStorage = () => {
-       
         console.log('SAVE!!!');
         window.localStorage.setItem(userInput.phone, JSON.stringify(userInput));
     };
 
     let name = '';
     return (
-      <Container>
-       <Form onSubmit={saveStorage}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>예약자</Form.Label>
-                <Form.Control
-                    type="name"
-                    placeholder="예약자를 입력하세요"
-                    onChange={reserchandle}
-                />
-                <Form.Text className="text-muted">
-                   
-                </Form.Text>
-            </Form.Group>
+        <Container>
+            <Form onSubmit={saveStorage}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>예약자</Form.Label>
+                    <Form.Control
+                        type="name"
+                        placeholder="예약자를 입력하세요"
+                        onChange={reserchandle}
+                    />
+                    <Form.Text className="text-muted"></Form.Text>
+                </Form.Group>
 
-            <Form.Group className="mb-3" controlId="phone">
-                <Form.Label>연락처</Form.Label>
-                <Form.Control
-                    type="number"
-                    placeholder="연락처를 입력하세요"
-                    onChange={phonehandle}
-                />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Label>예약종류</Form.Label>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <HiddenInput>
-                    <Form.Check
-                     
-                      type="radio"
-                       name={name}
-                        value="초진"
-                        label="초진"
-                        checked={setSelectData[name] === '초진' ? true : null}
-                        onChange={radiohandling}
+                <Form.Group className="mb-3" controlId="phone">
+                    <Form.Label>연락처</Form.Label>
+                    <Form.Control
+                        type="number"
+                        placeholder="연락처를 입력하세요"
+                        onChange={phonehandle}
                     />
-                </HiddenInput>
-                <HiddenInput>
-                    <Form.Check
-                        type="radio"
-                        name={name}
-                        value="재진"
-                        label="재진"
-                        checked={setSelectData[name] === '재진' ? true : null}
-                        onChange={radiohandling}
-                    />
-                </HiddenInput>
-                <HiddenInput>
-                    <Form.Check
-                        type="radio"
-                        name={name}
-                        value="상담"
-                        label="상담"
-                        checked={setSelectData[name] === '상담' ? true : null}
-                        onChange={radiohandling}
-                    />
-                </HiddenInput>
-            </Form.Group>
-            <LocBut>
-                <Button variant="primary" type="submit">
-                    <p>예약확정</p>
-                </Button>
-            </LocBut>
-        </Form>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Label>예약종류</Form.Label>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <HiddenInput>
+                        <Form.Check
+                            type="radio"
+                            name={name}
+                            value="초진"
+                            label="초진"
+                            checked={
+                                setSelectData[name] === '초진' ? true : null
+                            }
+                            onChange={radiohandling}
+                        />
+                    </HiddenInput>
+                    <HiddenInput>
+                        <Form.Check
+                            type="radio"
+                            name={name}
+                            value="재진"
+                            label="재진"
+                            checked={
+                                setSelectData[name] === '재진' ? true : null
+                            }
+                            onChange={radiohandling}
+                        />
+                    </HiddenInput>
+                    <HiddenInput>
+                        <Form.Check
+                            type="radio"
+                            name={name}
+                            value="상담"
+                            label="상담"
+                            checked={
+                                setSelectData[name] === '상담' ? true : null
+                            }
+                            onChange={radiohandling}
+                        />
+                    </HiddenInput>
+                </Form.Group>
+                <LocBut>
+                    <Button variant="primary" type="submit">
+                        <p>예약확정</p>
+                    </Button>
+                </LocBut>
+            </Form>
         </Container>
     );
 }
@@ -151,5 +153,5 @@ const LocBut = styled.div`
 const Container = styled.div`
     width: 30%;
     border: 1px solid black;
-    margin : 0 auto;
+    margin: 0 auto;
 `;
