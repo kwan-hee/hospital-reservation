@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# 프로젝트 설명
+병원에 가려고 예약을 하려고 합니다.
+예약이 가능한 일자를 선택하여, 예약을 진행하려고 합니다. 노쇼 방지를 위한 설계를 합니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 배포 : https://kwan-hee.github.io/hospital-reservation/
 
-## Available Scripts
+# 언어
+styled-components
+react-dom
+react-router-dom
+prettier
+modal
+a tag
+media quary
+localStorage
 
-In the project directory, you can run:
+# 구현기능
+* react-calendar 사용하여 해당 월에 예약 가능한 목록 나타내기
+* 오늘 날짜를 기준으로 가능한 시간을 보여줍니다.
+* react-hook-form을 사용하여 예약자 정보 폼 내의 예약자 이름, 연락처, 예약종류, * 요청사항을 입력하여 예약을 가능하게 합니다.
+* 유효성 검사(No show) 를 통해 필수값 입력되어야만 submit 가능하게 구현합니다.
+* mock data에서 연락처를 확인해 중복된 연락처일 경우 예약이 불가능합니다.
 
-### `npm start`
+✅ 상세페이지
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1.이름, 전화번호, 병원에 온 목적
+![2022-10-19_181403](https://user-images.githubusercontent.com/80756638/197110735-5c31e1b6-782c-413f-a7a0-8863c09e7af9.jpg)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. 이름, 전화번호, 목적 을 localStorage 에 저장
+![2022-10-19_181443](https://user-images.githubusercontent.com/80756638/197110791-d2dca420-ce84-4e64-9caa-bcea39b60151.jpg)
 
-### `npm test`
+3. 목데이터로 날짜를 뽑아서 예약된 날짜는 빨간 점으로 구현
+![2022-10-19_181554](https://user-images.githubusercontent.com/80756638/197110872-299deb52-603b-4667-85e9-81ca890c7104.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. No show 인 사람의 DB를 가지고 있어 이름을 입력하는 순간 No show 인 사람은 경고창이 뜬다.
+![2022-10-20_034145](https://user-images.githubusercontent.com/80756638/197111076-34c1ef65-496a-44d3-beef-08373360fef9.jpg)
 
-### `npm run build`
+5. 예약을 했는지 확인 후 예약이 되어 있으면 입력이 안되고 예약이 안되어 있으면 예약 가능하다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![2022-10-20_041037](https://user-images.githubusercontent.com/80756638/197111148-dfa0f189-0ce2-4ab3-81a6-35b7fc568a3f.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![2022-10-20_041135](https://user-images.githubusercontent.com/80756638/197111167-dbfd529c-4c3b-435f-87df-c35a564c01b7.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 새롭게 알게 된 것!
+이번에 새롭게 알게 된 것은 input tag를 썼을 때 이 input 이 많아질 때 다루기가 힘들어 진다. 
+그래서 이 input 들을 하나로 모아서 단하나의 useState 로 쓸 수 있는 법을 알게 되었다.
 
-### `npm run eject`
+```
+const [userInput, setUserInput] = useState({
+        reserch: '',
+        phone: '',
+        selectData: '',
+    });
+    
+ ```
+ 일단 useState를 만들때 초기값을 앞으로 쓸 input 을 초기화 한다.
+ 
+ ```
+ const reserchandle = (e) => {
+        e.preventDefault();  
+         
+        setUserInput({
+            ...userInput,
+            reserch: e.target.value,
+        });
+    };
+  const phonehandle = (e) => {
+        e.preventDefault();
+        setUserInput({
+            ...userInput,
+            phone: e.target.value,
+        });
+    };
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    const radiohandling = (e) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        console.log(name, value);
+        setSelectData({
+            [name]: value,
+        });
+        setUserInput({
+            ...userInput,
+            selectData: e.target.value,
+        });
+    };  
+ ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
